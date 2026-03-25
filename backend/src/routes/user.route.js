@@ -1,5 +1,5 @@
 import express from "express";
-import { signupValidator } from "../validators/auth.validator.js";
+import { loginValidator, signupValidator } from "../validators/auth.validator.js";
 import bcrypt from "bcryptjs";
 import validate from "../middlewares/validate.js";
 import User from "../models/user.model.js";
@@ -47,7 +47,10 @@ router.post("/otpVerification" , async (req,res) => {
         const token = jwt.sign({
             id: user._id
         },process.env.JWT_SECRET,{expiresIn: "1d"})
-        res.cookie(token)
+        res.cookie("token",token,{
+            httpOnly: true
+        })
+
         return res.status(201).json({
             message: "User verified"
         })
@@ -59,8 +62,51 @@ router.post("/otpVerification" , async (req,res) => {
 
 })
 
-router.post("/login" , validate , async (req,res) => {
+router.post("/login" , loginValidator ,validate , async (req,res) => {
+    const {identifier , password} = req.body;
     
+    //checking what the heck is identifier
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identifier);
+
+    let user;
+    let isTrueUser;
+
+    if(isEmail){
+       user = await User.findOne({email: identifier});
+       if(!user){
+        return res.status(409).json({
+            message: "User not found..."
+        })}
+        isTrueUser = await bcrypt.compare( password , user.password);       
+    }
+    else if(!isEmail){
+        user = await User.findOne({username: identifier});
+        if(!user){
+            return res.status(404).json({
+                message : "User not found..."
+            })
+        }
+        isTrueUser = await bcrypt.compare(password,user.password);
+
+    }
+
+    if(!isTrueUser){
+        return res.status(400).json({
+            message: "Invalid credentials"
+        })
+    }
+
+    const token = jwt.sign({
+        id: user._id
+    },process.env.JWT_SECRET,{expiresIn: "1d"})
+
+    res.cookie("token",token,{
+        httpOnly: true
+    })
+
+    res.status(200).json({
+        message: "LoggedIN successfully"
+    })
 })
 
 export default router;

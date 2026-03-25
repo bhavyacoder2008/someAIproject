@@ -20,16 +20,6 @@ export const signupValidator = [
 ]
 
 export const loginValidator = [
-    body("identifier").trim().notEmpty().withMessage("Enter username or email...")
-    .custom((val) => {
-        const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) //it will return true if regex matches val;
-        if(isEmail){
-            return true //yani ki code aage na jaye yahi se return ho jaye
-        }
-        //agar code iske neeche pohonchta hai to mtlab ki email regex se match nahi hua and identifier is username
-        
-        if(val.inlcudes("@")){
-            throw new Error("Invalid username or email")
-        }
-    }).withMessage("Invalid username or e-mail...")
+    body("identifier").trim().notEmpty().withMessage("Enter username or email..."),
+    body("password").trim().notEmpty().withMessage("Enter password...")
 ]
