@@ -8,6 +8,9 @@ export const signupValidator = [
         const username = await User.findOne({
             username : val
         })
+        if(username){
+            throw new Error("Username exists")
+        }
     }).withMessage("Username already exists...")
     ,
     body("email").trim().notEmpty().withMessage("E-mail is required...").isEmail().withMessage("Invalid E-mail")
@@ -15,6 +18,9 @@ export const signupValidator = [
         const isEmail = await User.findOne({
             email: val
         })
+        if(isEmail){
+            throw new Error("E-mail already exists...")
+        }
     }).withMessage("E-mail already exists"),
     body("password").trim().notEmpty().withMessage("Password is required...").isLength({min: 5}).withMessage("password must be atleast 5 characters long")
 ]
