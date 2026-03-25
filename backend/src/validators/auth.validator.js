@@ -18,3 +18,14 @@ export const signupValidator = [
     }).withMessage("E-mail already exists"),
     body("password").trim().notEmpty().withMessage("Password is required...").isLength({min: 5}).withMessage("password must be atleast 5 characters long")
 ]
+
+export const loginValidator = [
+    body("identifier").trim().notEmpty().withMessage("Enter username or password...")
+    .custom((val) => {
+        const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val) //it will return true if regex matches val;
+        if(isEmail){
+            return true //yani ki code aage na jaye yahi se return ho jaye
+        }
+        //agar code iske neeche pohonchta hai to mtlab ki 
+    })
+]

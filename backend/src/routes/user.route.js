@@ -59,4 +59,8 @@ router.post("/otpVerification" , async (req,res) => {
 
 })
 
+router.post("/login" , validate , async (req,res) => {
+    
+})
+
 export default router;
