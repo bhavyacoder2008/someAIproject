@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const RetroSignupUI = () => {
+	const naviagte = useNavigate();
+
   const [username , setUsername] = useState("");
   const [email , setEmail] = useState("");
   const [password , setPassword] = useState("");
@@ -22,10 +25,10 @@ const RetroSignupUI = () => {
 		const res = await axios.post("http://localhost:3000/user/signup" , { //iss exact moment par react ko moka mil gya re render karne ka
 			username,email,password
 		}, {withCredentials: true});
-		console.log(res.data)
+
+		naviagte("/otp");
 
     }catch(err){
-		console.log(err.response.data.errors.errors)
 
 		const errorArray = err.response.data.errors.errors
 		const tempObjecttoStoreErr = {}
