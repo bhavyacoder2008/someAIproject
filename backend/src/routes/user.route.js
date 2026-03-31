@@ -118,6 +118,7 @@ router.post("/login", loginValidator, validate, async (req, res) => {
   res.status(200).json({
     message: "LoggedIN successfully",
   });
+  
 });
 
 export default router;
