@@ -7,9 +7,8 @@ const Main = () => {
   
   return (
     <>
-      <div className='flex'>
-        <div className='w-1/5'></div>
-        <div className='min-w-4/5 w-full'>
+      <div className='flex min-h-screen bg-linear-to-br from-slate-900 via-purple-900 to-indigo-900'>
+        <div className=' w-full p-6'>
           <Info />
         </div>
       </div>
