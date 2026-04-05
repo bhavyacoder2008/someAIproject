@@ -7,6 +7,7 @@ import bcrypt from "bcryptjs";
 import validate from "../middlewares/validate.js";
 import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
+import authmiddleware from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
@@ -120,5 +121,11 @@ router.post("/login", loginValidator, validate, async (req, res) => {
   });
   
 });
+
+
+router.get("/details1" ,detailsOneValidator,validate, authmiddleware , async(req,res) => {
+  const {name , }
+} )
+
 
 export default router;
