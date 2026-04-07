@@ -13,5 +13,25 @@ export const detailsOneValidator = [
 ]
 
 export const detailsTwoValidator = [
-    body
+    body("linkedIn").optional().isURL().withMessage("Invalid URL"),
+    body("github").optional().isURL().withMessage("Invalid URL"),
+    body("leetcode").optional().isURL().withMessage("Invalid URL"),
+    body("codeforces").optional().isURL().withMessage("Invalid URL"),
+    body("hackerrank").optional().isURL().withMessage("Invalid URL")
+]
+
+export const detailsThreeValidator = [
+    body("project1URL").notEmpty().withMessage("This field is required").isURL().withMessage("Invalid URL"),
+    body("project1Details").notEmpty().withMessage("This field is required"),
+    body("project2URL").optional.isURL().withMessage("Invalid URL"),
+    body("project2Details").optional(),
+    body("project3URL").optional.isURL().withMessage("Invalid URL"),
+    body("project3Details").optional(),
+    body("project4URL").optional.isURL().withMessage("Invalid URL"),
+    body("project4Details").optional(),
+    body("project5URL").optional.isURL().withMessage("Invalid URL"),
+    body("project5Details").optional(),
+]
+
+export const detailsFourValidator = [
 ]
