@@ -123,9 +123,9 @@ router.post("/login", loginValidator, validate, async (req, res) => {
 });
 
 
-router.get("/details1" ,detailsOneValidator,validate, authmiddleware , async(req,res) => {
-  const {name , }
-} )
+// router.get("/details1" ,detailsOneValidator,validate, authmiddleware , async(req,res) => {
+//   // const {name , }
+// } )
 
 
 export default router;
