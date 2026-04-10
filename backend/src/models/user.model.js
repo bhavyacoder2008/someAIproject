@@ -12,6 +12,15 @@ const userSchema = new mongoose.Schema({
         default: false
     },
 
+    resumeEmail: String,
+
+    name: String,
+
+    portfolio: String,
+
+    Phone: String,
+
+
     password: String,
 
     otp: String,

@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import classicTemplate from "../resumes/classic.png";
+// import classicTemplate from "../resumes/classic.png";
 
 
 const Info = () => {

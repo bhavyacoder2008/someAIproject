@@ -10,7 +10,7 @@ import generatePDF from "./src/services/PDFGeneration.js";
 dotenv.config();
 connectDB();
 
-await generatePDF()
+// await generatePDF()
 
 // console.log(await genAIResponse("Hello gemini"))
 

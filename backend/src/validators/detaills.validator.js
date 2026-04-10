@@ -23,13 +23,13 @@ export const detailsTwoValidator = [
 export const detailsThreeValidator = [
     body("project1URL").notEmpty().withMessage("This field is required").isURL().withMessage("Invalid URL"),
     body("project1Details").notEmpty().withMessage("This field is required"),
-    body("project2URL").optional.isURL().withMessage("Invalid URL"),
+    body("project2URL").optional().isURL().withMessage("Invalid URL"),
     body("project2Details").optional(),
-    body("project3URL").optional.isURL().withMessage("Invalid URL"),
+    body("project3URL").optional().isURL().withMessage("Invalid URL"),
     body("project3Details").optional(),
-    body("project4URL").optional.isURL().withMessage("Invalid URL"),
+    body("project4URL").optional().isURL().withMessage("Invalid URL"),
     body("project4Details").optional(),
-    body("project5URL").optional.isURL().withMessage("Invalid URL"),
+    body("project5URL").optional().isURL().withMessage("Invalid URL"),
     body("project5Details").optional(),
 ]
 
