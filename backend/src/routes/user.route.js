@@ -133,10 +133,10 @@ router.post("/details1" ,authmiddleware ,detailsOneValidator,validate, async(req
     phone: phone,
     portfolio: portfolioSite ? portfolioSite : undefined
   } , {new: true})
-  res.status(201).json({message: user})
+    res.status(201).json({message: user})
   }
   catch(err){
-    res.status(400).json(err)
+    res.status(400).json({message: err})
   }
 } )
 

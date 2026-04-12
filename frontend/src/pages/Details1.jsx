@@ -9,21 +9,20 @@ const Details1 = () => {
     const [portfolioLink , setPortfolioLink] = useState("");
     const [errorObj , setErrorObj] = useState({});
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
         try{
-        const res = axios.post("http://localhost:3000/user/details1" , {
+        const res = await axios.post("http://localhost:3000/user/details1" , {
             name,
             email,
             phone,
             portfolioLink
-        });
-        console.log(res.data)
+        } , {withCredentials: true});
+            console.log(res)
     
-    }
-        catch(err){
-            console.log(err)
-        }
+        }catch(err){
+                console.log(err.response.data)
+            }
     }
   return (
     <div >
@@ -56,7 +55,9 @@ const Details1 = () => {
             onChange={(e) => setPortfolioLink(e.target.value)}
             />
         </form>
-        <button onClick={(e) => handleClick(e)} className='text-center border-amber-700'>Submit</button>
+        <div className='flex justify-center items-center w-1/2'>
+        <button onClick={(e) => handleClick(e)} className='text-center text-3xl cursor-pointer '>Submit</button>
+        </div>
     </div>
   )
 }
