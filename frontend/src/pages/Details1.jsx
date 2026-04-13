@@ -22,6 +22,13 @@ const Details1 = () => {
     
         }catch(err){
                 console.log(err.response.data)
+                const temperrArray = err.response.data.errors.errors;
+                const tempErrorObj = {};
+
+                temperrArray.forEach((error) => {
+                    tempErrorObj[error.path] = error.msg
+                })
+                setErrorObj(tempErrorObj);
             }
     }
   return (
@@ -34,20 +41,33 @@ const Details1 = () => {
             <div className='text-white text-lg sm:text-2xl font-bold mb-2 ml-6 sm:ml-16'>Name</div>
             <input type="text" placeholder='Name' className='border-2 border-gray-300 p-2 rounded-md mb-4 placeholder:text-white ml-6 sm:ml-16 w-[60%] sm:w-[40%] focus:ring-blue-700 text-white ' required={true}
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+                setName(e.target.value)
+                setErrorObj({})
+            }}
             /><br />
+            {errorObj.name ? <div>{errorObj.name}</div>: <></>}
             <div className='text-white text-lg sm:text-2xl font-bold mb-2 ml-6 sm:ml-16'>E-mail</div>
 
             <input type="email" placeholder='E-mail' className='border-2 border-gray-300 p-2 rounded-md mb-4 placeholder:text-white ml-6 sm:ml-16 w-[60%] sm:w-[40%] focus:ring-blue-500 text-white' 
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+                setEmail(e.target.value)
+                setErrorObj({})
+            }}
             /><br />
+            {errorObj.email && <p className='text-red-500'>{errorObj.email}</p>}
             <div className='text-white text-lg sm:text-2xl font-bold mb-2 ml-6 sm:ml-16'>Phone</div>
 
             <input type="text" placeholder='Phone' className='border-2 border-gray-300 p-2 rounded-md mb-4 placeholder:text-white ml-6 sm:ml-16 w-[60%] sm:w-[40%] focus:ring-blue-500 text-white' 
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            />
+            onChange={(e) => {
+                setPhone(e.target.value);
+                setErrorObj({})
+            }}
+            /><br />
+            {errorObj.phone ? <div>{errorObj.phone}</div>: <></>}
+
             <div className='text-white text-lg sm:text-2xl font-bold mb-2 ml-6 sm:ml-16'>Portfolio Site <span className='text-sm font-light'>(optional)</span></div>
 
             <input type="url" placeholder='Portfolio link' className='border-2 border-gray-300 p-2 rounded-md mb-4 placeholder:text-white ml-6 sm:ml-16 w-[60%] sm:w-[40%] focus:ring-blue-500 text-white' 

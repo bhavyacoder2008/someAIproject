@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
 
     portfolio: String,
 
-    Phone: String,
+    phone: String,
 
 
     password: String,
