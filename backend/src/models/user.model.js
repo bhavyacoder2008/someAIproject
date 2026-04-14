@@ -1,16 +1,6 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    username: String,
-
-    email: String,
-
-    password: String,
-
-    isVerified: {
-        type: Boolean,
-        default: false
-    },
 
     resumeEmail: String,
 
@@ -20,12 +10,6 @@ const userSchema = new mongoose.Schema({
 
     phone: String,
 
-
-    password: String,
-
-    otp: String,
-
-    otpExpiry: Date
 })
 
 const userModel = mongoose.model("user" , userSchema);
