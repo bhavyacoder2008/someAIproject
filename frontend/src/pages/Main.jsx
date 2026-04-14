@@ -1,10 +1,6 @@
-import React from 'react'
 import Info from '../components/Info'
 
 const Main = () => {
-
-
-  
   return (
     <>
       <div className='flex min-h-screen bg-linear-to-br from-slate-900 via-purple-900 to-indigo-900'>

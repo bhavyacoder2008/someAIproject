@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import classicTemplate from "../resumes/classic.png";
+import axios from 'axios';
 
 
 const Info = () => {
@@ -14,6 +14,10 @@ const Info = () => {
 
   const navigate = useNavigate();
 
+  const getOrCreateUser = async () => {
+    const res = await axios.post("http://localhost:3000/user/getOrCreateUser")
+    
+  }
 
   useEffect(()=> {
     gsap.from(heading.current , {
@@ -66,7 +70,11 @@ const Info = () => {
           {/* </div> */}
         </div>
         <div className='flex items-center justify-center sm:flex-row sm:gap-8 gap-4' ref={btns}>
-          <button className='text-lg sm:text-3xl bg-amber-400 hover:scale-95 cursor-pointer transition-all duration-200 p-2 sm:p-6' onClick={() => navigate("/details1")}>Get started For Free</button>
+          <button className='text-lg sm:text-3xl bg-amber-400 hover:scale-95 cursor-pointer transition-all duration-200 p-2 sm:p-6' onClick={() => {
+
+            navigate("/details1")
+
+          }}>Get started For Free</button>
           <button className='text-lg sm:text-3xl bg-amber-400 hover:scale-95 cursor-pointer transition-all duration-200 p-2 sm:p-6'>Get Premium</button>
         </div>
 
