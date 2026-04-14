@@ -8,7 +8,7 @@ const router = express.Router();
 
 
 
-router.post("/details1" ,authmiddleware ,detailsOneValidator,validate, async(req,res) => {
+router.post("/details1"  ,detailsOneValidator,validate, async(req,res) => {
   const {name , email , phone , portfolioSite} = req.body;
   try{
     const user = await User.findByIdAndUpdate(req.userID , {
