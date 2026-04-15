@@ -55,6 +55,7 @@ const Details1 = () => {
             <input type="email" placeholder='E-mail' className='border-2 border-gray-300 p-2 rounded-md mb-4 placeholder:text-white ml-6 sm:ml-16 w-[60%] sm:w-[40%] focus:ring-blue-500 text-white' 
             value={email}
             onChange={(e) => {
+                if(e.target.value.length > 35) return;
                 setEmail(e.target.value)
                 setErrorObj({})
             }}
@@ -65,18 +66,12 @@ const Details1 = () => {
             <input type="text" placeholder='Phone' className='border-2 border-gray-300 p-2 rounded-md mb-4 placeholder:text-white ml-6 sm:ml-16 w-[60%] sm:w-[40%] focus:ring-blue-500 text-white' 
             value={phone}
             onChange={(e) => {
+                if(e.target.value.length > 10) return;
                 setPhone(e.target.value);
                 setErrorObj({})
             }}
             /><br />
             {errorObj.phone ? <div>{errorObj.phone}</div>: <></>}
-
-            <div className='text-white text-lg sm:text-2xl font-bold mb-2 ml-6 sm:ml-16'>Portfolio Site <span className='text-sm font-light'>(optional)</span></div>
-
-            <input type="url" placeholder='Portfolio link' className='border-2 border-gray-300 p-2 rounded-md mb-4 placeholder:text-white ml-6 sm:ml-16 w-[60%] sm:w-[40%] focus:ring-blue-500 text-white' 
-            value={portfolioLink}
-            onChange={(e) => setPortfolioLink(e.target.value)}
-            />
         </form>
         <div className='flex justify-center items-center w-1/2'>
         <button onClick={(e) => handleClick(e)} className='text-center text-3xl cursor-pointer '>Submit</button>
@@ -88,9 +83,9 @@ const Details1 = () => {
                     YOUR NAME 
                 </h1>)}<br />
                 {/* email and phone and portfolio if its there */}
-                <div className='flex flex-row gap-4 w-100'>
-                    {email ? <p className='text-nowrap text-sm'>{email}</p>:  <p className='text-lgsm text-nowrap'>yourEmail@example.com</p>}
-                    {phone ? <p className='text-nowrap text-sm'> +91 {phone}</p>:  <p className='text-sm text-nowrap'>+91 99999999999</p>}
+                <div className='flex flex-row gap-4 w-120'>
+                    {email ? <p className='text-nowrap text-lg w-1/2 mr-4'>{email}</p>:  <p className='text-lg text-nowrap w-1/2 mr-4'>yourEmail@example.com</p>}
+                    {phone ? <p className='text-nowrap text-lg w-1/2'> +91 {phone}</p>:  <p className='text-lg text-nowrap w-1/2'>+91 99999999999</p>}
                 </div>
   
             </div>
