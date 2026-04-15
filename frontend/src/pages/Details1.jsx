@@ -9,6 +9,7 @@ const Details1 = () => {
     const [portfolioLink , setPortfolioLink] = useState("");
     const [errorObj , setErrorObj] = useState({});
 
+
     const handleClick = async (e) => {
         e.preventDefault();
         try{
@@ -32,7 +33,9 @@ const Details1 = () => {
             }
     }
   return (
-    <div >
+    <>
+    <div className='flex flex-row'>
+        <div className='w-1/2'>
         <h1 className='text-3xl sm:text-7xl font-bold text-center text-white sm:my-10 my-5'>Enter your details</h1>
         <div className='p-5 sm:p-8 text-center text-gray-100 text-xl sm:text-4xl font-semibold'>
             Enter Your Contact Information So that recruiters can contact you <br />
@@ -78,7 +81,23 @@ const Details1 = () => {
         <div className='flex justify-center items-center w-1/2'>
         <button onClick={(e) => handleClick(e)} className='text-center text-3xl cursor-pointer '>Submit</button>
         </div>
+        </div>
+        <div className='flex justify-center items-center p-5'>
+            <div className='bg-white w-150 p-5 h-[70%]'>
+                {name ? <div className='text-3xl '>{name.toUpperCase()}</div> : (<h1 className='sm:text-3xl'>
+                    YOUR NAME 
+                </h1>)}<br />
+                {/* email and phone and portfolio if its there */}
+                <div className='flex flex-row gap-4 w-100'>
+                    {email ? <p className='text-nowrap text-sm'>{email}</p>:  <p className='text-lgsm text-nowrap'>yourEmail@example.com</p>}
+                    {phone ? <p className='text-nowrap text-sm'> +91 {phone}</p>:  <p className='text-sm text-nowrap'>+91 99999999999</p>}
+                </div>
+  
+            </div>
+        </div>
     </div>
+
+    </>
   )
 }
 

@@ -17,11 +17,11 @@ const Info = () => {
   const getOrCreateUser = async () => {
     try{
       const res = await axios.post("http://localhost:3000/user/getOrCreateUser" , {} , {withCredentials: true});
-      console.log(res.data);
+      // console.log(res.data);
       navigate("/details1")
     }
     catch(err){
-      console.log(err)
+      console.log(err.message)
     }
 
 
