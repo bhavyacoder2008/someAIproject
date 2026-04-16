@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from "axios";
+import Preview from '../components/Preview';
 
 const Details2 = () => {
     const [name, setName] = useState("");
@@ -78,6 +79,7 @@ const Details2 = () => {
         <div className='flex justify-center items-center w-1/2'>
         <button onClick={(e) => handleClick(e)} className='text-center text-3xl cursor-pointer '>Submit</button>
         </div>
+        <Preview />
     </div>
   )
 }

@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import Preview from '../components/Preview';
 
 const Details1 = () => {
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
@@ -20,6 +23,7 @@ const Details1 = () => {
             portfolioLink
         } , {withCredentials: true});
             console.log(res)
+            navigate("/details2");
     
         }catch(err){
                 console.log(err.response.data)
@@ -77,19 +81,8 @@ const Details1 = () => {
         <button onClick={(e) => handleClick(e)} className='text-center text-3xl cursor-pointer '>Submit</button>
         </div>
         </div>
-        <div className='flex justify-center items-center p-5'>
-            <div className='bg-white w-150 p-5 h-[70%]'>
-                {name ? <div className='text-3xl '>{name.toUpperCase()}</div> : (<h1 className='sm:text-3xl'>
-                    YOUR NAME 
-                </h1>)}<br />
-                {/* email and phone and portfolio if its there */}
-                <div className='flex flex-row gap-4 w-120'>
-                    {email ? <p className='text-nowrap text-lg w-1/2 mr-4'>{email}</p>:  <p className='text-lg text-nowrap w-1/2 mr-4'>yourEmail@example.com</p>}
-                    {phone ? <p className='text-nowrap text-lg w-1/2'> +91 {phone}</p>:  <p className='text-lg text-nowrap w-1/2'>+91 99999999999</p>}
-                </div>
-  
-            </div>
-        </div>
+        <Preview name={name} email={email} phone={phone} />
+
     </div>
 
     </>
